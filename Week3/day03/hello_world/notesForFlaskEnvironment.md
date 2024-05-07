@@ -6,15 +6,15 @@ web application
 1. ---- pip3 install pipenv   --in our main  terminal-->to install globally only once I have it
 2. create different environment for each different projects by following command
 3. open folder in integrated terminal and run this to create environment 
-        ====>pipenv install flask
+        ==================================>pipenv install flask
 
-4. then run this ==> pipenv shell
+4. then run this ==========================> pipenv shell
 **we can not have multiple environments at the same time 
 5. **to exit environment cmnd c or exit
 
 
 then in server.py 
-1.  from flask import Flask
+1. from flask import Flask
 2. app= Flask(__name__)  ==create instance of flask
 3.  if __name__ =="__main__":
     app.run(debug=True)
