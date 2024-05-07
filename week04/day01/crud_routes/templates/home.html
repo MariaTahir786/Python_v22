@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+    <!-- Add your CSS links or styles here -->
+</head>
+
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>Todo</th>
+                <th>Date Added</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for todo in todos %}
+                <tr>
+                    <td>{{todo.text}}</td>
+                    <td>{{ todo.created_at }}</td> 
+                    <td>
+                        <a href="todo/{{todo.id}}">view</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+<a href="todo/add">Add a to do </a>
+
+</body>
+
+</html>
