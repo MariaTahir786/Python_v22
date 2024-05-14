@@ -1,0 +1,14 @@
+.box {
+    width: 100px; /* Set width */
+    height: 100px; /* Set height */
+    background-color: lightblue; /* Set background color */
+    border: 2px solid black; /* Set border */
+    margin: 10px; /* Add margin */
+}
+
+.container-fluid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Makes the container full height of the viewport */
+}
