@@ -7,12 +7,12 @@ from app.models.todo_model import Todo
 #! READ
 @app.route('/')
 def home():
-    return render_template('home.html', todos=Todo.get_all_todos())
+    return render_template('/todo/home.html', todos=Todo.get_all_todos())
 
 #! READ
 @app.route('/todo/<int:id>')
 def view_todo(id):
-    return render_template('view.html', todo=Todo.get_one_by_id_1_to_many(id))
+    return render_template('/todo/view.html', todo=Todo.get_one_by_id_1_to_many(id))
 
 #add a new task
 @app.route('/task/add/<int:todo_id>', methods=['POST'])
@@ -26,7 +26,7 @@ def add_task(todo_id):
 # render form 
 @app.route('/todo/add')
 def get_add_todo_form():
-    return render_template('add.html')
+    return render_template('/todo/add.html')
 
 #! CREATE
 # import request and redirect
@@ -40,7 +40,7 @@ def add_todo():
 #! UPDATE
 @app.route('/todo/update/<int:id>')
 def get_update_todo_form(id):
-    return render_template('update.html', todo=Todo.get_one_by_id(id))
+    return render_template('/todo/update.html', todo=Todo.get_one_by_id(id))
 
 #! UPDATE
 @app.route('/todo/update', methods=["POST"])

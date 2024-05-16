@@ -1,7 +1,8 @@
 from app.config.mysqlconnection import connectToMySQL
 
 class TaskModel:
-    dB = 'one_to_many'
+    
+    dB = 'registeration_db_cls'
     def __init__(self, data):
         self.id=data['id']
         self.description=data['description']

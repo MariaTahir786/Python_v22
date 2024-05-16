@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+</head>
+<body>
+        <div class="row">
+            <div class="col-6">
+                <h2>Login</h2>
+                {% with messages=get_flashed_messages(category_filter=['login']) %}
+                    {% if messages %}
+                        {%for message in messages %}
+                        <div>
+                            <p>{{message}}</p>
+                        </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+                <form action="/user/login" class="row" method="POST">
+                    <div class="col-12">
+                        <label for="email_address">Email:</label>
+                        <input type="email" name="email_address">
+                    </div>
+
+                    <div class="col-12">
+                        <label for="password">Password:</label>
+                        <input type="password" name="password">
+                    </div>
+                    <div class="col-12 text-center">
+                        <input type="submit" class="btn btn-success">
+                    </div>
+                </form>
+            </div>
+            <div class="col-6">
+                <h2>Register</h2>
+                {% with messages=get_flashed_messages(category_filter=['registration']) %}
+                {% if messages %}
+                    {%for message in messages %}
+                    <div>
+                        <p>{{message}}</p>
+                    </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+
+
+
+                <form action="/user/register" class="row" method="POST">
+
+                    <div class="col-6">
+                        <label for="first_name">First Name:</label>
+                        <input type="text" name="first_name">
+                    </div>
+
+                    <div class="col-6">
+                        <label for="last_name">Last Name:</label>
+                        <input type="text" name="last_name">
+                    </div>
+                    
+                    <div class="col-6">
+                        <label for="email_address">Email:</label>
+                        <input type="email" name="email_address">
+                    </div>
+
+                    <div class="col-6">
+                        <label for="password">Password:</label>
+                        <input type="password" name="password">
+                    </div>
+
+                    <div class="col-6">
+                        <label for="confirm_password">Confirm Password:</label>
+                        <input type="password" name="confirm_password">
+                    </div>
+
+                    <div class="col-12 text-center">
+                        <input type="submit" class="btn btn-success">
+                    </div>
+                </form>
+            </div>
+        </div>
+</body>
+</html>

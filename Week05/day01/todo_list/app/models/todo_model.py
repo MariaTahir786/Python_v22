@@ -2,7 +2,7 @@ from app.config.mysqlconnection import connectToMySQL
 from app.models.task_model import TaskModel
 
 class Todo:
-    dB = 'one_to_many'
+    dB = 'registeration_db_cls'
 
     #constructor
     def __init__(self, data):
