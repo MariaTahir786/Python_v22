@@ -1,0 +1,26 @@
+#first-row{
+    border: 2px solid black;
+    height: 70px;
+    margin: 50px;
+}
+
+#col-first-row{
+    border:1px solid red ;
+
+}
+#second-row{
+    border: 2px solid black;
+    height: 70px;
+    margin: 50px;
+
+}
+
+#col-second-row{
+    border:1px solid red ;
+    
+}
+#third-row{
+    border: 2px solid black;
+    height: 70px;
+    margin: 50px;
+}

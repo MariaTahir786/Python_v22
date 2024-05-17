@@ -92,9 +92,9 @@ class Todo:
         query = """
             INSERT INTO
                     todos
-            (text, description)
+            (text, description,user_id)
             VALUES
-            (%(text)s, %(description)s)
+            (%(text)s, %(description)s ,5)
         """
         return connectToMySQL(cls.dB).query_db(query, data)
     
