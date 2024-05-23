@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+</head>
+<body>
+    <div class="container">
+        <h2>Welcome, {{user.first_name}} {{user.last_name}}</h2>
+            <a href="/user/logout">Logout</a>
+            <a href="/chore/add">Add Chore</a>
+            <a href="/user/dashboard">dashBoard</a>
+        <div class="row">
+            {% with messages=get_flashed_messages(category_filter=['login']) %}
+                {% if messages %}
+                    {%for message in messages %}
+                    <div>
+                        <p>{{message}}</p>
+                    </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            <table>
+                {% for chore in user.chores %}
+                    <tr>
+                        <td>{{chore.title}}</td>
+                        <td>{{chore.description}}</td>
+                        <td>{{chore.location}}</td>
+                        <td><a href="/chore/{{chore.id}}">View</a></td>
+                        <td><a href="/chore/update/{{chore.id}}">Update</a></td>
+                        <td><a href="/chore/delete/{{chore.id}}">Delete</a></td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</body>
+</html>

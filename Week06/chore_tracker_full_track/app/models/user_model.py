@@ -3,7 +3,7 @@ from flask import flash
 from app.config.mysqlconnection import connectToMySQL
 from flask_bcrypt import Bcrypt
 import re
-from app.models.chore_model import Chores
+
 
 EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
 NAME_REGEX = re.compile(r'[a-zA-Z]')
@@ -54,6 +54,7 @@ class User:
     
     @classmethod
     def get_one_by_id(cls,id):
+        from app.models.chore_model import Chores
         query="""
         select * 
         from users

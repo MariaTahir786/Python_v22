@@ -2,7 +2,7 @@ from app import app
 from app.models.user_model import User
 from flask import Flask, render_template, request,session,redirect, flash
 from flask_bcrypt import Bcrypt
-
+from app.models.chore_model import Chores
 from app.models.user_model import User
 
 bcrypt = Bcrypt(app)
@@ -36,16 +36,20 @@ def login():
 
         flash("Invalid Credentials", 'login')
         return redirect('/')
-    session['user_id']=user.id
+    session['user_id'] = user.id
     return redirect('/user/dashboard')
+
 
 @app.route('/user/dashboard')
 def dashboard():
+
     if not 'user_id' in session:
         return redirect('/')
-    return render_template('/user/dashboard.html',user= User.get_one_by_id(session['user_id']))
+
+    return render_template('/user/dashboard.html', chores = Chores.get_all_chores())
+
 
 @app.route('/user/logout')
 def logout():
-    session.clear
+    session.clear()
     return redirect('/')

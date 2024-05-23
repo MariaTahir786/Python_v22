@@ -7,15 +7,18 @@
 </head>
 <body>
     <div class="container">
-        <h2>Welcome, {{user.first_name}} {{user.last_name}}</h2>
+        
             <a href="/user/logout">Logout</a>
+            <a href="/chore/my">My Chores</a>
         <div class="row">
+            
             <table>
-                {% for chore in user.chores %}
+                {% for chore in chores %}
                     <tr>
                         <td>{{chore.title}}</td>
                         <td>{{chore.description}}</td>
                         <td>{{chore.location}}</td>
+                        <td>{{chore.poster.first_name}} {{chore.poster.last_name}}</td>
                         <td><a href="/chore/{{chore.id}}">View</a></td>
                     </tr>
                 {% endfor %}
