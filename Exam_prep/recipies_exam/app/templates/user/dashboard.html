@@ -9,23 +9,23 @@
 <body>
     <div class="container">
         <div class="d-flex justify-content-end p-3">
-            <a href="/chore/my" style="text-decoration:none">My Chores</a>
+            <a href="/recipie/my" style="text-decoration:none">My Recipies</a>
             <a href="/user/logout" class="ms-3" style="text-decoration:none">Logout</a>
         </div>
         <div class="row">
-            <h1>All Chores</h1>
+            <h1>All Recipies</h1>
             
             <table class="table table-success table-striped">
-                {% for chore in chores %}
+                {% for recipie in recipies %}
                     <tr>
                         <td>{{loop.index}}</td>
-                        <td>{{chore.title}}</td>
-                        <td>{{chore.description}}</td>
-                        <td>{{chore.location}}</td>
-                        <td>{{chore.poster.first_name}} {{chore.poster.last_name}}</td>
-                        <td>{{chore.num_likes}}</td>
-                        <td><a href="/chore/like/{{chore.id}}" style="text-decoration: none;">Like</a></td>
-                        <td><a href="/chore/{{chore.id}}" style="text-decoration:none">View</a></td>
+                        <td>{{recipie.name}}</td>
+                        <td>{{recipie.description}}</td>
+                        <td>{{recipie.instruction}}</td>
+                        <td>{{recipie.poster.first_name}} {{recipie.poster.last_name}}</td>
+                        <td>{{recipie.num_likes}}</td>
+                        <td><a href="/recipie/like/{{recipie.id}}" style="text-decoration: none;">Like</a></td>
+                        <td><a href="/recipie/{{recipie.id}}" style="text-decoration:none">View</a></td>
                     </tr>
                 {% endfor %}
             </table>

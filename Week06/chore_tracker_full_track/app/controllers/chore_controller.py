@@ -5,9 +5,13 @@ from app.models.chore_model import Chores
 from app.models.user_model import User
 
 
+# @app.route('/chore/<int:chore_id>')
+# def get_chore(chore_id):
+#     return render_template('/chores/view_chores.html', chore = Chores.get_one_chore(chore_id))
+
 @app.route('/chore/<int:chore_id>')
 def get_chore(chore_id):
-    return render_template('/chores/view_chores.html', chore = Chores.get_one_chore(chore_id))
+    return render_template('/chores/view_chores.html', chore = Chores.get_one_with_likes(chore_id))
 
 
 @app.route('/chore/my')
@@ -37,7 +41,7 @@ def add_chore():
         **request.form,
         'user_id': session['user_id']
     })
-
+    flash("Chore Added")
     return redirect('/chore/my')
 
 @app.route('/chore/update/<int:chore_id>')
@@ -61,3 +65,10 @@ def update_chore():
 def delete(chore_id):
         Chores.delete_chore(chore_id)
         return redirect('/chore/my')
+    
+@app.route('/chore/like/<int:chore_id>')
+def like_chore(chore_id):
+    if not 'user_id' in session:
+        return redirect('/')
+    Chores.add_like(chore_id, int(session['user_id']))
+    return redirect('/user/dashboard')

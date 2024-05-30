@@ -12,7 +12,7 @@ PASSWORD_REGEX = re.compile(r'^(?=.*[A-Z])(?=.*[0-9]).{8,}$')
 bcrypt=Bcrypt(app)
 
 class User:
-    dB= "chore_track"
+    dB= "recipies_exam"
     
     def __init__(self, data):
         self.id = data['id']
@@ -20,7 +20,7 @@ class User:
         self.last_name = data['last_name']
         self.email_address = data['email_address']
         self.password = data['password']
-        self.chores=[]
+        self.recipies=[]
         
         
     @classmethod
@@ -54,16 +54,16 @@ class User:
     
     @classmethod
     def get_one_by_id(cls,id):
-        from app.models.chore_model import Chores
+        from Exam_prep.recipies_exam.app.models.recipie_model import Recipies
         query="""
         SELECT *, 
                     (
                         SELECT count(*) 
-                        FROM chore_track.chores_has_likes
-                        WHERE chore_id = chores.id
+                        FROM chore_track.recipies_has_likes
+                        WHERE chore_id = recipies.id
                     ) as num_likes 
         from users
-        left join chores on chores.user_id=users.id
+        left join recipies on recipies.user_id=users.id
         where users.id=%(id)s
         """
         results =connectToMySQL(cls.dB).query_db(query,{'id':id})
@@ -73,12 +73,12 @@ class User:
         user=cls(results[0])
         
         for row in results:
-            if row['chores.id']:
-                user.chores.append(Chores({
-                    'id':row['chores.id'],
-                    'title':row['title'],
+            if row['recipies.id']:
+                user.recipies.append(Recipies({
+                    'id':row['recipies.id'],
+                    'name':row['name'],
                     'description':row['description'],
-                    'location':row['location'],
+                    'instruction':row['instruction'],
                     'num_likes': row['num_likes']
                     
                 }))
