@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+</head>
+<body>
+    <h1>Star Wars</h1>
+    <a href="/get/images">Pictures</a>
+    <a href="/image/upload">Upload image</a>
+    {% for person in people %}
+        <h3>
+            <a href="/people/{{person.id}}">{{person.name}}</a>
+        </h3>
+        <p>Likes: {{person.likes}}</p>
+        <form action="/people/like/{{person.id}}" method="GET">
+            <button type="submit">Like</button>
+        </form>
+    {% endfor %}
+</body>
+</html>
