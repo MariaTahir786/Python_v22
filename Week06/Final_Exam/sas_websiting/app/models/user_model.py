@@ -47,9 +47,6 @@ class User:
         
         results =connectToMySQL(cls.dB).query_db(query,{'email_address':email_address})
         
-        #checking to make sure something was loaded
-        # if not results:
-        #     return None
         return cls(results[0]) if results else None
     
     @classmethod
@@ -98,7 +95,7 @@ class User:
             
         if len(registration_form['last_name'])<3:
             is_valid=False
-            flash("FLast name must be 3 chars long","registration")
+            flash("Last name must be 3 chars long","registration")
             
         if not NAME_REGEX.match(registration_form['last_name']):
                 is_valid = False

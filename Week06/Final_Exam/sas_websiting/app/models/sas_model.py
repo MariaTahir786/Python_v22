@@ -57,29 +57,6 @@ class Sightings:
     """
         return [cls(data) for data in connectToMySQL(cls.dB).query_db(query)]
 
-    
-    # @classmethod
-    # def get_all_sightings(cls):
-    #     query="""
-    #             SELECT *, 
-    #                 (
-    #                     SELECT count(*) 
-    #                     FROM sas_sighting.sightings_has_users
-    #                     WHERE sighting_id = sightings.id
-    #                 ) as num_sasquatches
-    #             from sightings
-    #             left join users on users.id=sightings.user_id
-    #         """
-    #     # results =connectToMySQL(cls.dB).query_db(query)
-        
-    #     # chores=[]
-    #     # for result in results:
-    #     #     chores.append(cls(results))
-        
-    #     return [cls(data) for data in connectToMySQL(cls.dB).query_db(query)]
-        # =============================================================
-        # start from here Maria
-        # =========================================
     @classmethod
     def create_sighting(cls, data):
         query = """
@@ -142,37 +119,7 @@ class Sightings:
                     'password': row['password']
                 }))
         return sighting
-    # @classmethod
-    # def get_one_with_sasquatch(cls,id):
-    #     query="""
-    #         SELECT *, 
-    #                 (
-    #                     SELECT count(*) 
-    #                     FROM sas_sighting.sightings_has_users
-    #                     WHERE sighting_id = sightings.id
-    #                 ) as num_sasquatches
-    #         FROM sightings   
-    #         left join sightings_has_users on sightings.id=sightings_has_users.sighting_id
-    #         left join users on sightings_has_users.user_id=users.id
-    #         where sightings.id=%(id)s
-    #     """
-    #     results =connectToMySQL(cls.dB).query_db(query,{'id':id})
-    #     if not results:
-    #         return None
-            
-    #     sighting=cls(results[0])
-            
-    #     for row in results:
-    #         if row['users.id']:
-    #             sighting.sasquatches.append(User({
-    #                 'id':row['users.id'],
-    #                 'first_name':row['first_name'],
-    #                 'last_name':row['last_name'],
-    #                 'email_address':row['email_address'],
-    #                 'password':row['password']
-                    
-    #             }))
-    #         return sighting
+    
             
     @classmethod
     def add_saquatch(cls, sighting_id, user_id):
